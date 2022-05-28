@@ -1,0 +1,9 @@
+@import '../../styles/components/btns';
+@import '../../styles/abstract/variables';
+
+.pagination {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  margin: 50px 0 30px;
+}

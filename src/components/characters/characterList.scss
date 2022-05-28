@@ -1,0 +1,20 @@
+.item-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: auto;
+  animation-name: fade-in-bottom;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+@keyframes fade-in-bottom {
+  0% {
+    opacity: 0;
+    transform: translateY(50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
