@@ -13,6 +13,7 @@ export const useApi = () => {
       .then((response) => {
         setCharacters(response.results.slice(0, 15));
         setInfo(response.info);
+
         setLoading(false);
       })
       .catch((err) => {
@@ -39,5 +40,6 @@ export const useApi = () => {
     setLoading,
     getNextPage,
     getPreviousPage,
+    setCharacters,
   };
 };

@@ -1,34 +1,58 @@
+@import '../../styles/abstract/variables';
+@import '../../styles/abstract/mixins';
 .character-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
   margin: 1rem;
-  width: 150px;
-  height: 250px;
-  box-shadow: 5px 8px 10px rgba(#84c9a7, 0.3);
+  width: 160px;
+  height: 260px;
+  box-shadow: 5px 8px 10px rgba($color-primary-1, 0.3);
   padding: 1rem 1rem 0 1rem;
   border-radius: 5px;
   position: relative;
-  background-color: rgba(0, 0, 0, 0.7);
-
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.6) 40%,
+    rgba(0, 0, 0, 0.95) 70%
+  );
+  @include respond(tab-port) {
+    width: 170px;
+    margin: 1.5rem;
+    height: 320px;
+  }
   &__img {
     width: 130px;
     border-radius: 50%;
-    box-shadow: 0 5px 10px rgba(#84c9a7, 0.4);
+    box-shadow: 0 5px 10px rgba($color-primary-1, 0.4);
     position: absolute;
     top: 1rem;
     left: 50%;
     transform: translateX(-50%);
+    @include respond(tab-port) {
+      width: 140px;
+    }
   }
   &__data {
-    background-color: rgba(0, 0, 0, 0.6);
-    width: 150px;
+    background-color: transparent;
+    width: 160px;
     padding: 1.5rem 1rem 2rem;
     height: 120px;
     border-radius: 5px;
-    color: #84c9a7;
-    font-size: 1.5rem;
+    color: $color-primary-1;
+    font-size: 1.2rem;
+    @include respond(tab-port) {
+      width: 170px;
+      font-size: 1.4rem;
+      height: 180px;
+    }
+    &--name {
+      font-size: 1.5rem;
+      @include respond(tab-port) {
+        font-size: 1.7rem;
+      }
+    }
   }
   &__favourites {
     position: absolute;

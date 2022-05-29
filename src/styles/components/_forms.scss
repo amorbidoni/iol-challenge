@@ -1,0 +1,35 @@
+@import '../abstract/mixins';
+@import '../abstract/variables';
+.search-bar {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  &__item {
+    border: none;
+    border-radius: 20px;
+    height: 40px;
+    width: 300px;
+    padding-left: 2rem;
+    background-color: rgba(0, 0, 0, 0.9);
+    box-shadow: 5px 10px 10px rgba($color-primary-1, 0.2);
+    border: 1px solid $color-secondary;
+    color: $color-primary-1;
+    @include respond(tab-port) {
+      margin-top: 20px;
+    }
+    @include respond(tab-land) {
+      margin-top: 50px;
+      height: 50px;
+      width: 500px;
+      border-radius: 30px;
+      font-size: 1.7rem;
+    }
+    &:focus {
+      outline: none;
+      width: 350px;
+      @include respond(tab-land) {
+        width: 550px;
+      }
+    }
+  }
+}

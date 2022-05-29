@@ -7,7 +7,7 @@ export const FavouritesCharactersContainer = () => {
   return (
     <div>
       <section className="item-list-container">
-        <CharacterList characters={favourites} />
+        <CharacterList characters={favourites} searchText={''} />
       </section>
     </div>
   );

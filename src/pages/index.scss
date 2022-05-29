@@ -1,4 +1,4 @@
-.main {
+.body {
   height: 100vh;
   width: 100vw;
   overflow-y: scroll;
@@ -6,4 +6,7 @@
   background-image: url('../assets/bg/bg-2.jpg');
   background-size: cover;
   padding-top: 70px;
+}
+.main {
+  min-height: 100vh;
 }

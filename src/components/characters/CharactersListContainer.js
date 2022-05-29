@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
+import { useForm } from '../../hooks/useForm';
 import { useApi } from '../../services/useApi';
+import { Loader } from '../loader/Loader';
 import { Pagination } from '../pagination/Pagination';
 import { CharacterList } from './CharacterList';
 import './characterListContainer.scss';
 export const CharactersListContainer = () => {
-  const baseUrl = 'https://rickandmortyapi.com/api/character';
+  // dependencias
   const {
     characters,
     loading,
@@ -14,12 +16,18 @@ export const CharactersListContainer = () => {
     getNextPage,
     getPreviousPage,
   } = useApi();
+  const [form, handleInputChange] = useForm({
+    searchBar: '',
+  });
+  //
+
+  const baseUrl = 'https://rickandmortyapi.com/api/character';
 
   useEffect(() => {
     setLoading(true);
     getAllCharacters(baseUrl);
   }, []);
-
+  //
   const handleNextPage = () => {
     setLoading(true);
     getNextPage(info.next);
@@ -31,6 +39,16 @@ export const CharactersListContainer = () => {
 
   return (
     <div>
+      <div className="search-bar">
+        <input
+          className="search-bar__item"
+          type="text"
+          placeholder="Buscar..."
+          onChange={handleInputChange}
+          value={form.searchBar}
+          name="searchBar"
+        ></input>
+      </div>
       <Pagination
         handleNextPage={handleNextPage}
         handlePreviousPage={handlePreviousPage}
@@ -38,11 +56,14 @@ export const CharactersListContainer = () => {
         previousPage={info.prev}
       />
       {loading ? (
-        <p>cargando.. </p>
+        <Loader />
       ) : (
         <>
           <section className="item-list-container">
-            <CharacterList characters={characters} />
+            <CharacterList
+              characters={characters}
+              searchText={form.searchBar.toLowerCase()}
+            />
           </section>
           <Pagination
             handleNextPage={handleNextPage}

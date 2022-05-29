@@ -30,7 +30,11 @@ export const CharacterItem = ({ character }) => {
     <div className="character-item">
       <img className="character-item__img" src={character.image} />
       <div className="character-item__data">
-        <p className="character-item__data--nombre">{character.name}</p>
+        <p className="character-item__data--name">{character.name}</p>
+        <p className="character-item__data--loaction-name">
+          ★ {character.location.name}
+        </p>
+        <p className="character-item__data--gender">★ {character.gender}</p>
         <div className="character-item__favourites">
           {!favouriteIcon ? (
             <img
