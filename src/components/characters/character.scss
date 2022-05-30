@@ -30,6 +30,17 @@
     top: 1rem;
     left: 50%;
     transform: translateX(-50%);
+    cursor: default;
+    transition: transform 1s, border 0.2s;
+    box-sizing: content-box;
+    &.fav {
+      box-shadow: 7px 0px 10px rgba($color-yellow, 0.5),
+        -7px 0 10px rgba($color-yellow, 0.5);
+    }
+    &:hover {
+      transform: translateX(-50%) scale(1.4) translateY(-10px);
+      box-shadow: 5px 10px 12px rgba($color-primary-1, 0.5);
+    }
     @include respond(tab-port) {
       width: 140px;
     }
@@ -42,6 +53,7 @@
     border-radius: 5px;
     color: $color-primary-1;
     font-size: 1.2rem;
+    cursor: default;
     @include respond(tab-port) {
       width: 170px;
       font-size: 1.4rem;

@@ -1,3 +1,4 @@
+@import '../../styles/abstract/variables';
 .item-list {
   display: flex;
   flex-wrap: wrap;
@@ -8,7 +9,12 @@
   animation-fill-mode: both;
 }
 .alert-msg {
-  color: red;
+  color: $color-primary-1;
+  font-size: 1.5rem;
+  text-shadow: 0 5px 10px rgba($color-primary-1, 0.3);
+  background: rgba(0, 0, 0, 0.9);
+  padding: 10px 20px;
+  border-radius: 20px;
 }
 
 @keyframes fade-in-bottom {

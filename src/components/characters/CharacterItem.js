@@ -5,8 +5,8 @@ import { useFavContext } from '../../context/favProvider';
 export const CharacterItem = ({ character }) => {
   const { addFav, deleteFav, favourites } = useFavContext();
   const [favouriteIcon, setFavouriteIcon] = useState(false);
+  let isInFavourites = favourites.some((x) => x.id === character.id);
   useEffect(() => {
-    let isInFavourites = favourites.some((x) => x.id === character.id);
     if (isInFavourites) {
       setFavouriteIcon(true);
     }
@@ -28,7 +28,12 @@ export const CharacterItem = ({ character }) => {
   };
   return (
     <div className="character-item">
-      <img className="character-item__img" src={character.image} />
+      <img
+        className={
+          isInFavourites ? 'character-item__img fav' : 'character-item__img'
+        }
+        src={character.image}
+      />
       <div className="character-item__data">
         <p className="character-item__data--name">{character.name}</p>
         <p className="character-item__data--loaction-name">

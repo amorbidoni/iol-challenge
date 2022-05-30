@@ -13,13 +13,13 @@ export const CharacterList = ({ characters, searchText }) => {
 
   return (
     <div className="item-list">
-      {filteredData !== [] ? (
+      {filteredData.length !== 0 ? (
         filteredData.map((c) => (
           <CharacterItem character={c} key={`${c.name}-${c.id}`} />
         ))
       ) : (
         <div>
-          <p className="alert-msg">Sin resultados</p>
+          <p className="alert-msg">Sin resultados en esta página...</p>
         </div>
       )}
     </div>
