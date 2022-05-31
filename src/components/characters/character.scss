@@ -1,13 +1,17 @@
 @import '../../styles/abstract/variables';
 @import '../../styles/abstract/mixins';
+//
+$card-width-1: 200px;
+$card-width-2: 240px;
+
 .character-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
   margin: 1rem;
-  width: 160px;
-  height: 260px;
+  width: $card-width-1;
+  height: 340px;
   box-shadow: 5px 8px 10px rgba($color-primary-1, 0.3);
   padding: 1rem 1rem 0 1rem;
   border-radius: 5px;
@@ -18,9 +22,9 @@
     rgba(0, 0, 0, 0.95) 70%
   );
   @include respond(tab-port) {
-    width: 170px;
+    width: $card-width-2;
     margin: 1.5rem;
-    height: 320px;
+    height: 380px;
   }
   &__img {
     width: 130px;
@@ -33,6 +37,9 @@
     cursor: default;
     transition: transform 1s, border 0.2s;
     box-sizing: content-box;
+    @include respond(tab-port) {
+      width: 150px;
+    }
     &.fav {
       box-shadow: 7px 0px 10px rgba($color-yellow, 0.5),
         -7px 0 10px rgba($color-yellow, 0.5);
@@ -41,26 +48,28 @@
       transform: translateX(-50%) scale(1.4) translateY(-10px);
       box-shadow: 5px 10px 12px rgba($color-primary-1, 0.5);
     }
-    @include respond(tab-port) {
-      width: 140px;
-    }
   }
   &__data {
     background-color: transparent;
-    width: 160px;
+    width: $card-width-1;
     padding: 1.5rem 1rem 2rem;
-    height: 120px;
+    height: 210px;
     border-radius: 5px;
     color: $color-primary-1;
     font-size: 1.2rem;
     cursor: default;
+    span {
+      color: $color-secondary;
+    }
     @include respond(tab-port) {
-      width: 170px;
+      width: $card-width-2;
       font-size: 1.4rem;
-      height: 180px;
+      height: 240px;
+      padding: 1.5rem 1.5rem 2rem;
     }
     &--name {
       font-size: 1.5rem;
+      color: $color-secondary;
       @include respond(tab-port) {
         font-size: 1.7rem;
       }

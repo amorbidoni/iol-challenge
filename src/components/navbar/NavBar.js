@@ -11,7 +11,7 @@ export const NavBar = () => {
     <nav id="nav-bar" className="nav-bar" onScroll={handleScroll}>
       <div className="nav-bar__logo">
         <NavLink to={'/'}>
-          <img src={img.logo} />
+          <img alt="Logo Rick and morty" src={img.logo} />
         </NavLink>
       </div>
       <ul className="nav-bar__box">

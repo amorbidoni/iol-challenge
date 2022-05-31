@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import './character.scss';
 import img from '../../assets/images';
 import { useFavContext } from '../../context/favProvider';
-export const CharacterItem = ({ character }) => {
+
+//
+export const CharacterItem = memo(({ character }) => {
   const { addFav, deleteFav, favourites } = useFavContext();
   const [favouriteIcon, setFavouriteIcon] = useState(false);
   let isInFavourites = favourites.some((x) => x.id === character.id);
@@ -10,7 +12,7 @@ export const CharacterItem = ({ character }) => {
     if (isInFavourites) {
       setFavouriteIcon(true);
     }
-  }, []);
+  }, [isInFavourites]);
 
   const toggleFavourite = (char, action) => {
     setFavouriteIcon(!favouriteIcon);
@@ -33,13 +35,22 @@ export const CharacterItem = ({ character }) => {
           isInFavourites ? 'character-item__img fav' : 'character-item__img'
         }
         src={character.image}
+        alt={character.name}
       />
       <div className="character-item__data">
         <p className="character-item__data--name">{character.name}</p>
         <p className="character-item__data--loaction-name">
-          ★ {character.location.name}
+          <span>✰</span> Location: {character.location.name}
         </p>
-        <p className="character-item__data--gender">★ {character.gender}</p>
+        <p className="character-item__data--gender">
+          <span>✰</span> Origin: {character.origin.name}
+        </p>
+        <p className="character-item__data--gender">
+          <span>✰</span> Status: {character.status}
+        </p>
+        <p className="character-item__data--gender">
+          <span>✰</span> Species: {character.species}
+        </p>
         <div className="character-item__favourites">
           {!favouriteIcon ? (
             <img
@@ -48,7 +59,8 @@ export const CharacterItem = ({ character }) => {
               onClick={() => {
                 toggleFavourite(character, 'add');
               }}
-            ></img>
+              alt="agregar a favoritos"
+            />
           ) : (
             <img
               className="star star--full"
@@ -56,10 +68,11 @@ export const CharacterItem = ({ character }) => {
               onClick={() => {
                 toggleFavourite(character, 'delete');
               }}
-            ></img>
+              alt="eliminar de favoritos"
+            />
           )}
         </div>
       </div>
     </div>
   );
-};
+});
